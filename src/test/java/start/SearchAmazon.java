@@ -44,12 +44,14 @@ public class SearchAmazon {
             pageCount++;
 
             for (int j = 0; j < results.size(); j++) {
-
-                String resultTitle = results.get(j).getAttribute("alt");
+                WebElement eachResult = results.get(j);
+                //every image element has an attribute named "alt" which has an info about product or sth.
+                String resultTitle = eachResult.getAttribute("alt");
                 if(resultTitle.startsWith("Sponsored Ad")){
                     totalResults--; //To exclude sponsored results from real search results
                     continue;
                 }
+                // To get the link of the result, I picked up the parent of parent element of eachResult element by using dots below
                 WebElement linkElement = driver.findElement(By.xpath(xpathToResults+"/../.."));
                 String urlToResult = linkElement.getAttribute("href");
                 System.out.println((whichResult+1)+"."+resultTitle);
