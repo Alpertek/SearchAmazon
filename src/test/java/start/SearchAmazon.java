@@ -39,6 +39,7 @@ public class SearchAmazon {
             String xpathToResults = "//div[contains(@class,'s-main-slot s-result-list s-search-results sg-row')]//*[starts-with(@data-cel-widget,'search_result')][@data-component-type='s-search-result']//span//a//div//img";
 
             ArrayList<WebElement> results = (ArrayList<WebElement>) driver.findElements(By.xpath(xpathToResults));
+            // I wanted to calculate the number of results without taking it from Amazon
             totalResults += results.size();
             pageCount++;
 
